@@ -14,15 +14,12 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'hjs');
-app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
+app.set('view engine', 'jade');
+app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
 app.use(app.router);
-app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
@@ -31,12 +28,6 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/part1', routes.part1);
-app.get('/death', routes.death);
-app.get('/nudity', routes.nudity);
-app.get('/drugs', routes.drugs);
-app.get('/sex', routes.sex);
-app.get('/beer', routes.beer);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
