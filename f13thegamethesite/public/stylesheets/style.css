@@ -1,7 +1,11 @@
+/* Rounded Corner Mixin */
+/* Box Shadow Mixin */
+/* Gradient Mixin */
 body {
   padding: 50px;
   font: 14px "Palatino Linotype", "Book Antiqua", Palatino, serif;
   background-color: #001111;
+  /*.gradient(top, #001111, #661100);*/
   color: #dddddd;
 }
 a {

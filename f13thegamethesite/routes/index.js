@@ -12,7 +12,7 @@ exports.index = function(req, res){
 */
 exports.part1 = function(req, res){
 	res.render('gamepage', { title: 'The Start', heading: 'The campers show up', description: 'These campers are ready to GET IT ON', choice1: 'Do Drugs', choice2: 'Drink Beer', link1: '/drugs', link2: '/beer'});
-
+	//setInterval(function() { res.redirect('/death') }, 120000);
 	if(timeToDie(Math.floor((Math.random()*10)+1))) {
 		res.redirect('/death');
 	}
@@ -66,11 +66,11 @@ exports.sex = function(req, res){
 * DEATH
 */
 exports.death = function(req, res) {
-	res.render('gamepage', {title: 'You\'re Dead', heading: 'You\'re Dead', description: 'Jason Killed You.'});
+	res.render('gamepage', {title: 'You\'re Dead', heading: 'You\'re Dead', description: 'Jason Killed You.', choice1: "Start Over", link1: "/part1"});
 }
 
 function timeToDie(playerNum) {
 	var thisNum = Math.floor((Math.random()*10)+1);
 	console.log(thisNum + " vs " + playerNum);
-	return (playerNum === thisNum);
+	return (playerNum < thisNum);
 }
